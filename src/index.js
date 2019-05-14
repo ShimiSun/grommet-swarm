@@ -4,7 +4,8 @@ import { render } from 'react-dom';
 import { Box, Grommet } from 'grommet';
 import { Nodes } from 'grommet-icons';
 
-import { Learning, NavHeader, Section, SwarmImage } from './components';
+import { Learning, Section, SwarmImage } from './components/LandingPage';
+import { NavHeader } from './components';
 
 import { customTheme } from './customTheme';
 

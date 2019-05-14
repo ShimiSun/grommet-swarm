@@ -5,7 +5,7 @@ import { Box, Diagram, Stack } from 'grommet';
 import { Cube } from './Cube';
 // import { Nodes } from 'grommet-icons';
 
-import { edge } from '../data/edge';
+import { edge } from '../../data/edge';
 
 const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   fromTarget,
