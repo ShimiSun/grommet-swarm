@@ -10,7 +10,7 @@ npm install
 
 # Serve on localhost:3002
 
-yarn start
+npm run start
 
 # Build for production
 
