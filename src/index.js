@@ -1,39 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Box, Grommet } from 'grommet';
-import { Nodes } from 'grommet-icons';
 
-import { Learning, Section, SwarmImage } from './components/LandingPage';
+import { Inference, Landing, Learn, NotFound } from './pages';
 import { NavHeader } from './components';
 
 import { customTheme } from './customTheme';
 
-class App extends Component {
-  render() {
-    return (
-      <Grommet theme={customTheme} full>
-        <Box fill alignSelf="center" align="center">
-          <NavHeader />
-          <SwarmImage />
-          <Section
-            title="Swarm Learning"
-            desc="Collaborative machine learning, data privacy and model training at the Edge."
-            goto="SHOW ME THE LEARNING"
-          >
-            <Learning />
-          </Section>
-          <Section
-            title="Swarm Inferencing"
-            desc="Be an active participant and watch how HPE Labs Swarm Network happens live."
-            goto="START THE SWARM"
-            margin={{ top: 'xlarge' }}
-          />
-          <Nodes size="xxlarge" color="accent-3" />
-        </Box>
-      </Grommet>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <Grommet theme={customTheme} full>
+      <Box alignSelf="center" align="center">
+        <NavHeader />
+      </Box>
+      <Box>
+        <Switch>
+          <Route path="/" exact component={Landing} />
+          <Route path="/learn" exact component={Learn} />
+          <Route path="/inference" component={Inference} />
+          <Route component={NotFound} />
+        </Switch>
+      </Box>
+    </Grommet>
+  </Router>
+);
 
 render(<App />, document.getElementById('root'));
