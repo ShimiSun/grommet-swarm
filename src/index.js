@@ -26,7 +26,7 @@ class App extends Component {
             title="Swarm Inferencing"
             desc="Be an active participant and watch how HPE Labs Swarm Network happens live."
             goto="START THE SWARM"
-            margin={{ vertical: 'xlarge' }}
+            margin={{ top: 'xlarge' }}
           />
           <Nodes size="xxlarge" color="accent-3" />
         </Box>
