@@ -18,8 +18,6 @@ const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   ...rest,
 });
 
-const nodes = [1, 2, 3, 4];
-
 class Learning extends React.Component {
   state = {
     draw: true,
@@ -29,9 +27,9 @@ class Learning extends React.Component {
     this.timer = setInterval(() => {
       const { draw } = this.state;
       this.setState({
-        draw: draw ? false : true,
+        draw: !draw,
       });
-    }, 5000);
+    }, 3000);
   }
 
   render() {
@@ -48,19 +46,20 @@ class Learning extends React.Component {
       <Stack>
         <Box>
           <Box alignSelf="center" margin={{ bottom: 'large' }}>
-            <Cube
-              id="1"
-              accuracy={edge[0].accuracy}
-              name={edge[0].name}
-              time={edge[0].time}
-              utilization={edge[0].utilization}
+            <Box>
+              <Cube
+                id="1"
+                accuracy={edge[0].accuracy}
+                name={edge[0].name}
+                time={edge[0].time}
+                utilization={edge[0].utilization}
+              />
+            </Box>
+            <Box
+              id="4"
+              width="xsmall"
+              margin={{ bottom: 'large', top: 'xlarge' }}
             />
-          </Box>
-          <Box
-            id="4"
-            margin={{ bottom: 'xlarge', top: 'large' }}
-            align="center"
-          >
             {/* <Nodes size="xlarge" color="accent-3" /> */}
           </Box>
           <Box direction="row" gap="xlarge">

@@ -16,7 +16,7 @@ export const customTheme = deepMerge(hpe, {
   },
   diagram: {
     extend:
-      '@keyframes example { to { stroke-dashoffset: 0; } } path { stroke-dasharray: 500; stroke-dashoffset: 500; animation: example 5s linear forwards; }',
+      '@keyframes example { to { stroke-dashoffset: 0; } } path { stroke-dasharray: 500; stroke-dashoffset: 500; animation: example 3s linear forwards; }',
   },
   heading: {
     extend: `margin-bottom: 0; margin-top: 24px;`,

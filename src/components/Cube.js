@@ -6,14 +6,12 @@ const Cube = ({ accuracy, direction, id, name, size, time, utilization }) => (
   <Box
     align="center"
     gap="small"
-    id={id}
     direction={direction || 'row'}
     key={name}
     pad="small"
-    border={{ color: 'grommet', size: 'medium' }}
     round
   >
-    <CubeIcon size={size || 'xlarge'} color="grommet" />
+    <CubeIcon id={id} size={size || 'xlarge'} color="grommet" />
     <Box>
       <Text weight="bold"> {name}</Text>
       <Text> Accuracy: {accuracy} </Text>
