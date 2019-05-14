@@ -21,33 +21,29 @@ const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
 const nodes = [1, 2, 3, 4];
 
 class Learning extends React.Component {
-  state = { topRow: nodes.slice(0, 1) };
+  state = {
+    draw: true,
+  };
 
   componentDidMount() {
     this.timer = setInterval(() => {
-      const { topRow } = this.state;
+      const { draw } = this.state;
       this.setState({
-        topRow: nodes.slice(
-          0,
-          topRow.length < nodes.length ? topRow.length + 1 : 1,
-        ),
+        draw: draw ? false : true,
       });
-    }, 1200);
+    }, 5000);
   }
 
   render() {
-    const { topRow } = this.state;
+    const { draw } = this.state;
     const connections = [];
-    if (topRow.length >= 1) {
-      connections.push(connection('1', '4', { anchor: 'vertical' }));
-    }
-    if (topRow.length >= 2) {
+
+    if (draw) {
+      connections.push(connection('4', '1', { anchor: 'vertical' }));
+      connections.push(connection('4', '2', { anchor: 'vertical' }));
       connections.push(connection('4', '3', { anchor: 'vertical' }));
     }
-    if (topRow.length >= 3) {
-      connections.push(connection('4', '2', { anchor: 'vertical' }));
-    }
-    console.log(edge[0]);
+
     return (
       <Stack>
         <Box>
@@ -60,14 +56,19 @@ class Learning extends React.Component {
               utilization={edge[0].utilization}
             />
           </Box>
-          <Box id="4" margin={{ bottom: 'xlarge' }} align="center">
+          <Box
+            id="4"
+            margin={{ bottom: 'xlarge', top: 'large' }}
+            align="center"
+          >
             {/* <Nodes size="xlarge" color="accent-3" /> */}
           </Box>
-          <Box direction="row" gap="large">
+          <Box direction="row" gap="xlarge">
             {[2, 3].map(id => (
               <Cube
                 accuracy={edge[id - 1].accuracy}
                 id={id}
+                key={edge[id - 1].name}
                 name={edge[id - 1].name}
                 time={edge[id - 1].time}
                 utilization={edge[id - 1].utilization}

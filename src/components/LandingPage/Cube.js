@@ -13,7 +13,6 @@ const Cube = ({ accuracy, id, name, time, utilization }) => (
     border={{ color: 'grommet', size: 'medium' }}
     round
   >
-    {console.log('name', name)}
     <CubeIcon size="xlarge" color="grommet" />
     <Box>
       <Text weight="bold"> {name}</Text>
