@@ -1,0 +1,45 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "description": "swarm-learning demo",
+  "main": "src/index.js",
+  "author": "Shimrit (Shimi) Yacobi",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "grommet": "^2.7.0",
+    "grommet-icons": "^4.0.1",
+    "grommet-theme-hpe": "^0.4.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-router-dom": "4.3.1",
+    "styled-components": "^4.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.16.4",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --mode development --open --hot --port 3002",
+    "build": "webpack --mode production",
+    "prettier": "pretty-quick --staged"
+  },
+  "pre-commit": [
+    "lint-fix",
+    "prettier",
+    "test"
+  ]
+}
