@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Heading, Paragraph, Text } from 'grommet';
+import { Box, RoutedButton, Heading, Paragraph, Text } from 'grommet';
 
-const Section = ({ children, desc, goto, title, width, ...rest }) => (
+const Section = ({ children, desc, goto, path, title, width, ...rest }) => (
   <Box align="center" flex={false} {...rest}>
     <Box width={width} align="center">
       <Heading color="#01a982" level={1} size="large">
@@ -14,7 +14,7 @@ const Section = ({ children, desc, goto, title, width, ...rest }) => (
       <Box flex={false} margin="small">
         {children}
       </Box>
-      <Button
+      <RoutedButton
         margin={{ vertical: 'large' }}
         primary
         label={
@@ -22,6 +22,7 @@ const Section = ({ children, desc, goto, title, width, ...rest }) => (
             {goto}
           </Text>
         }
+        path={path}
       />
     </Box>
   </Box>

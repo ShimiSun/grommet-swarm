@@ -21,6 +21,7 @@ class RoutedButton extends React.Component {
   render() {
     const {
       exact,
+      icon,
       match,
       location,
       history,
@@ -34,7 +35,7 @@ class RoutedButton extends React.Component {
         plain
         active={!!pathMatch}
         {...rest}
-        icon={!!pathMatch && <Nodes />}
+        icon={icon && !!pathMatch && <Nodes />}
         onClick={this.onClick}
       />
     );

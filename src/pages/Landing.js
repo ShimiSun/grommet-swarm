@@ -14,6 +14,7 @@ class Landing extends Component {
           title="Swarm Learning"
           desc="Collaborative machine learning, data privacy and model training at the Edge."
           goto="SHOW ME THE LEARNING"
+          path="/learn"
         >
           <Learning />
         </Section>
@@ -22,6 +23,7 @@ class Landing extends Component {
           desc="Be an active participant and watch how HPE Labs Swarm Network happens live."
           goto="START THE SWARM"
           margin={{ top: 'xlarge' }}
+          path="/inference"
         />
         <Nodes size="xxlarge" color="accent-3" />
       </Box>
