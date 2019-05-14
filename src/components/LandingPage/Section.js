@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import { Box, RoutedButton, Heading, Paragraph, Text } from 'grommet';
 
@@ -9,7 +10,7 @@ const Section = ({ children, desc, goto, path, title, width, ...rest }) => (
         {title}
       </Heading>
       <Paragraph size="large" textAlign="center">
-        <b>{desc}</b>
+        {desc}
       </Paragraph>
       <Box flex={false} margin="small">
         {children}
@@ -29,7 +30,6 @@ const Section = ({ children, desc, goto, path, title, width, ...rest }) => (
 );
 
 Section.propTypes = {
-  children: PropTypes.node,
   desc: PropTypes.string.isRequired,
   goto: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

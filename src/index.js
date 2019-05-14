@@ -18,7 +18,7 @@ const App = () => (
       <Box>
         <Switch>
           <Route path="/" exact component={Landing} />
-          <Route path="/learn" exact component={Learn} />
+          <Route path="/learn" component={Learn} />
           <Route path="/inference" component={Inference} />
           <Route component={NotFound} />
         </Switch>

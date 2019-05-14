@@ -1,2 +1,2 @@
 export * from './NavHeader';
-export * from './RoutedButton';
+export * from './SwarmHeading';

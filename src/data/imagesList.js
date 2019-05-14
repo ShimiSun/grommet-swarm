@@ -1,0 +1,17 @@
+export const imagesList = [
+  'assets/database/airplane1.png',
+  'assets/database/airplane2.png',
+  'assets/database/airplane3.png',
+  'assets/database/airplane4.png',
+  // 'assets/database/airplane5.png',
+  'assets/database/ship1.png',
+  'assets/database/ship2.png',
+  'assets/database/ship3.png',
+  'assets/database/ship4.png',
+  // 'assets/database/ship5.png',
+  'assets/database/truck1.png',
+  'assets/database/truck2.png',
+  'assets/database/truck3.png',
+  'assets/database/truck4.png',
+  // 'assets/database/truck5.png',
+];

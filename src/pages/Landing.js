@@ -6,6 +6,8 @@ import { Nodes } from 'grommet-icons';
 import { Learning, Section, SwarmImage } from '../components/LandingPage';
 
 class Landing extends Component {
+  statue = {};
+
   render() {
     return (
       <Box align="center">

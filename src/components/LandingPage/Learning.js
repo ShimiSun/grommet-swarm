@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Box, Diagram, Stack } from 'grommet';
 
-import { Cube } from './Cube';
+import { Cube } from '../Cube';
 // import { Nodes } from 'grommet-icons';
 
-import { edge } from '../../data/edge';
+import { edges as edge } from '../../data/edges';
 
 const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   fromTarget,
