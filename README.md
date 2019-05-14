@@ -10,7 +10,7 @@ npm install
 
 # Serve on localhost:3002
 
-yarn start
+npm run start
 
 # Build for production
 
@@ -20,7 +20,7 @@ yarn build
 
 Swarm Learning app for labs Discover 2019
 
-Author
+# Author
 Shimi
 
 Version
