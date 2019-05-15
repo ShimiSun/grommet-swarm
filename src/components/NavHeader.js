@@ -26,16 +26,9 @@ const NavHeader = () => (
           }
         />
         <Box direction="row" gap="large">
+          <RoutedButton active={false} icon path="/learn" label="Learning" />
           <RoutedButton
             active={false}
-            hoverIndicator
-            icon
-            path="/learn"
-            label="Learning"
-          />
-          <RoutedButton
-            active={false}
-            hoverIndicator
             icon
             path="/inference"
             label="Inferencing"
