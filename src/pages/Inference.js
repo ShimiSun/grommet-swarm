@@ -4,7 +4,8 @@ import { Box, Button, Image, Text, ThemeContext } from 'grommet';
 import { SwarmHeading } from '../components';
 
 import { imagesList } from '../data/imagesList';
-import { InferenceInfoEmpty, InferenceInfo } from '../components/Inference';
+import { InferenceInfoEmpty } from '../components/Inference/InferenceInfoEmpty';
+import { InferenceInfo } from '../components/Inference/InferenceInfo';
 
 const imageCursor = {
   image: {
@@ -34,11 +35,17 @@ class Inference extends Component {
                 height="small"
                 width="small"
                 key={image}
-                border={image === clickedImage && !clicked ? 'all' : undefined}
+                border={
+                  image === clickedImage && !clicked
+                    ? { color: 'accent-3', size: '8px' }
+                    : undefined
+                }
               >
                 <ThemeContext.Extend value={imageCursor}>
                   <Image
-                    fit="contain"
+                    fit={
+                      image === clickedImage && !clicked ? 'cover' : 'contain'
+                    }
                     src={image}
                     onClick={() =>
                       this.setState({
@@ -52,6 +59,7 @@ class Inference extends Component {
           </Box>
           <Button
             primary
+            margin="small"
             label={
               <Box pad={{ horizontal: 'medium' }}>
                 <Text size="xlarge" weight="bold">
