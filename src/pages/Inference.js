@@ -1,26 +1,52 @@
 import React, { Component } from 'react';
 
-import { Box, Button, Image, Text } from 'grommet';
+import { Box, Button, Image, Text, ThemeContext } from 'grommet';
 import { SwarmHeading } from '../components';
 
 import { imagesList } from '../data/imagesList';
+import { InferenceInfoEmpty, InferenceInfo } from '../components/Inference';
+
+const imageCursor = {
+  image: {
+    extend: 'cursor: pointer;',
+  },
+};
 
 class Inference extends Component {
-  state = {};
+  state = {
+    clicked: false,
+    clickedImage: undefined,
+  };
 
   render() {
-    console.log('inferences!');
+    const { clicked, clickedImage } = this.state;
+
     return (
-      <Box alignSelf="center" align="center" flex={false}>
+      <Box alignSelf="center" align="center">
         <Box width="xlarge" align="center">
           <SwarmHeading
             title="Swarm Inferencing"
             desc="Select an image and click 'GO!' to begin inferencing"
           />
-          <Box direction="row" size="small" flex={false} gap="none">
+          <Box direction="row">
             {imagesList.map(image => (
-              <Box size="small" height="small" key={image}>
-                <Image fit="contain" src={image} />
+              <Box
+                height="small"
+                width="small"
+                key={image}
+                border={image === clickedImage && !clicked ? 'all' : undefined}
+              >
+                <ThemeContext.Extend value={imageCursor}>
+                  <Image
+                    fit="contain"
+                    src={image}
+                    onClick={() =>
+                      this.setState({
+                        clickedImage: image,
+                      })
+                    }
+                  />
+                </ThemeContext.Extend>
               </Box>
             ))}
           </Box>
@@ -29,11 +55,17 @@ class Inference extends Component {
             label={
               <Box pad={{ horizontal: 'medium' }}>
                 <Text size="xlarge" weight="bold">
-                  GO!
+                  {clicked ? 'DO IT AGAIN?' : 'GO!'}
                 </Text>
               </Box>
             }
+            onClick={() =>
+              this.setState({
+                clicked: !clicked,
+              })
+            }
           />
+          {clicked ? <InferenceInfo /> : <InferenceInfoEmpty />}
         </Box>
       </Box>
     );

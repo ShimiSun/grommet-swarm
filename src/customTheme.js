@@ -26,6 +26,9 @@ export const customTheme = deepMerge(hpe, {
       xxlarge: '280px',
     },
   },
+  meter: {
+    color: '#9060EB',
+  },
   paragraph: {
     extend: () => `margin-top: 0;`,
     xxlarge: {
