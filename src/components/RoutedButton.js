@@ -1,8 +1,8 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { matchPath, withRouter } from 'react-router';
 import { Button } from 'grommet';
-import { Nodes } from 'grommet-icons';
+import { Grommet as GrommetIcon } from 'grommet-icons';
 
 // A simple component that shows the pathname of the current location
 class RoutedButton extends React.Component {
@@ -35,7 +35,9 @@ class RoutedButton extends React.Component {
         plain
         active={!!pathMatch}
         {...rest}
-        icon={icon && !!pathMatch && <Nodes />}
+        icon={
+          icon && !!pathMatch && <GrommetIcon color="accent-3" size="small" />
+        }
         onClick={this.onClick}
       />
     );
