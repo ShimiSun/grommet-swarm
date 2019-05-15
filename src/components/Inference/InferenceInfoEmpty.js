@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Cube, Nodes } from 'grommet-icons';
+import { Cube, Inherit } from 'grommet-icons';
 import { Box, Text } from 'grommet';
 
 export const cubes = [1, 2, 3].map(index => (
@@ -21,7 +21,7 @@ export const InferenceInfoEmpty = () => (
       direction="row"
       gap="medium"
     >
-      <Nodes color="accent-3" size="xlarge" />
+      <Inherit color="accent-3" size="xlarge" />
       <Text alignSelf="center"> Swarm 001</Text>
     </Box>
   </Box>

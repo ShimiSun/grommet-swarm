@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Box } from 'grommet';
-import { Nodes } from 'grommet-icons';
+import { Inherit } from 'grommet-icons';
 
 import { Learning, Section, SwarmImage } from '../components/LandingPage';
 
@@ -27,7 +27,7 @@ class Landing extends Component {
           margin={{ top: 'xlarge' }}
           path="/inference"
         />
-        <Nodes size="xxlarge" color="accent-3" />
+        <Inherit size="xxlarge" color="accent-3" />
       </Box>
     );
   }

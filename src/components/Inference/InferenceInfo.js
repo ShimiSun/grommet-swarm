@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Box, Text, Meter } from 'grommet';
-import { Cube, Diamond } from 'grommet-icons';
+import { Cube, Inherit } from 'grommet-icons';
 
 import {
   inferenceResults,
@@ -74,7 +74,7 @@ export const InferenceInfo = () => (
       direction="row"
       gap="medium"
     >
-      <Diamond color="accent-3" size="xlarge" />
+      <Inherit color="accent-3" size="xlarge" />
       <Box gap="small">
         <Box gap="xsmall">
           <Text size="medium" weight="bold">

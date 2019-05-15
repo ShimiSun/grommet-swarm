@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Diagram, Stack } from 'grommet';
 
 import { Cube } from '../Cube';
-// import { Nodes } from 'grommet-icons';
+// import { Inherit } from 'grommet-icons';
 
 import { edges as edge } from '../../data/edges';
 // import { descriptiveLearning } from '../../data/descriptiveLearning';
@@ -71,7 +71,7 @@ class Learning extends React.Component {
                 width="xsmall"
                 margin={{ bottom: 'large', top: 'xlarge' }}
               />
-              {/* <Nodes size="xlarge" color="accent-3" /> */}
+              {/* <Inherit size="xlarge" color="accent-3" /> */}
             </Box>
             <Box direction="row" gap="xlarge">
               {[2, 3].map(id => LearningCube(edge[id - 1], id))}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Box, Text } from 'grommet';
-import { Nodes } from 'grommet-icons';
+import { Inherit } from 'grommet-icons';
 import { Cube } from '../components/Cube';
 import { SwarmChart } from '../components/SwarmChart';
 
@@ -52,7 +52,7 @@ class Learn extends Component {
           </Box>
           <Box alignSelf="center" align="center">
             <Box direction="row" gap="small">
-              <Nodes color="accent-3" size="large" />
+              <Inherit color="accent-3" size="large" />
               <Text weight={600} color="accent-3" alignSelf="center">
                 Swarm Precision: {swarmEdge.accuracy}
               </Text>
