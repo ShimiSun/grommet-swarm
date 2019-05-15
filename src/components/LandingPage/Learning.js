@@ -62,7 +62,7 @@ class Learning extends React.Component {
           <Text size="small"> {descriptiveLearning[1]} </Text>
         </Box> */}
         <Stack>
-          <Box>
+          <Box margin={{ left: 'xlarge' }}>
             <Box alignSelf="center" margin={{ bottom: 'large' }}>
               {LearningCube(edge[0], '1')}
               <Box />
