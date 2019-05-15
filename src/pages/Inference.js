@@ -15,12 +15,12 @@ const imageCursor = {
 
 class Inference extends Component {
   state = {
-    clicked: false,
-    clickedImage: undefined,
+    isSelected: false,
+    selectedImage: undefined,
   };
 
   render() {
-    const { clicked, clickedImage } = this.state;
+    const { isSelected, selectedImage } = this.state;
 
     return (
       <Box alignSelf="center" align="center">
@@ -36,7 +36,7 @@ class Inference extends Component {
                 width="small"
                 key={image}
                 border={
-                  image === clickedImage && !clicked
+                  image === selectedImage && !isSelected
                     ? { color: 'accent-3', size: '8px' }
                     : undefined
                 }
@@ -44,12 +44,14 @@ class Inference extends Component {
                 <ThemeContext.Extend value={imageCursor}>
                   <Image
                     fit={
-                      image === clickedImage && !clicked ? 'cover' : 'contain'
+                      image === selectedImage && !isSelected
+                        ? 'cover'
+                        : 'contain'
                     }
                     src={image}
                     onClick={() =>
                       this.setState({
-                        clickedImage: image,
+                        selectedImage: image,
                       })
                     }
                   />
@@ -63,17 +65,17 @@ class Inference extends Component {
             label={
               <Box pad={{ horizontal: 'medium' }}>
                 <Text size="xlarge" weight="bold">
-                  {clicked ? 'DO IT AGAIN?' : 'GO!'}
+                  {isSelected ? 'DO IT AGAIN?' : 'GO!'}
                 </Text>
               </Box>
             }
             onClick={() =>
               this.setState({
-                clicked: !clicked,
+                isSelected: !isSelected,
               })
             }
           />
-          {clicked ? <InferenceInfo /> : <InferenceInfoEmpty />}
+          {isSelected ? <InferenceInfo /> : <InferenceInfoEmpty />}
         </Box>
       </Box>
     );
