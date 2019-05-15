@@ -30,7 +30,11 @@ class RoutedButton extends React.Component {
         active={!!pathMatch}
         {...rest}
         icon={
-          icon && !!pathMatch && <GrommetIcon color="accent-3" size="small" />
+          icon && !!pathMatch ? (
+            <GrommetIcon color="accent-3" size="small" />
+          ) : (
+            <React.Fragment />
+          )
         }
         onClick={this.onClick}
       />
