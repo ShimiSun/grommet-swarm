@@ -6,6 +6,7 @@ import { Cube } from '../Cube';
 // import { Nodes } from 'grommet-icons';
 
 import { edges as edge } from '../../data/edges';
+// import { descriptiveLearning } from '../../data/descriptiveLearning';
 
 const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   fromTarget,
@@ -17,6 +18,18 @@ const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   type: 'direct',
   ...rest,
 });
+
+const LearningCube = (node, index) => (
+  <Cube
+    accuracy={node.accuracy}
+    id={index}
+    key={node.name}
+    name={node.name}
+    time={node.time}
+    utilization={node.utilization}
+    weight="bold"
+  />
+);
 
 class Learning extends React.Component {
   state = {
@@ -43,40 +56,30 @@ class Learning extends React.Component {
     }
 
     return (
-      <Stack>
-        <Box>
-          <Box alignSelf="center" margin={{ bottom: 'large' }}>
-            <Box>
-              <Cube
-                id="1"
-                accuracy={edge[0].accuracy}
-                name={edge[0].name}
-                time={edge[0].time}
-                utilization={edge[0].utilization}
+      <Box direction="row">
+        {/* <Box gap="small">
+          <Text size="small"> {descriptiveLearning[0]} </Text>
+          <Text size="small"> {descriptiveLearning[1]} </Text>
+        </Box> */}
+        <Stack>
+          <Box>
+            <Box alignSelf="center" margin={{ bottom: 'large' }}>
+              {LearningCube(edge[0], '1')}
+              <Box />
+              <Box
+                id="4"
+                width="xsmall"
+                margin={{ bottom: 'large', top: 'xlarge' }}
               />
+              {/* <Nodes size="xlarge" color="accent-3" /> */}
             </Box>
-            <Box
-              id="4"
-              width="xsmall"
-              margin={{ bottom: 'large', top: 'xlarge' }}
-            />
-            {/* <Nodes size="xlarge" color="accent-3" /> */}
+            <Box direction="row" gap="xlarge">
+              {[2, 3].map(id => LearningCube(edge[id - 1], id))}
+            </Box>
           </Box>
-          <Box direction="row" gap="xlarge">
-            {[2, 3].map(id => (
-              <Cube
-                accuracy={edge[id - 1].accuracy}
-                id={id}
-                key={edge[id - 1].name}
-                name={edge[id - 1].name}
-                time={edge[id - 1].time}
-                utilization={edge[id - 1].utilization}
-              />
-            ))}
-          </Box>
-        </Box>
-        <Diagram connections={connections} />
-      </Stack>
+          <Diagram connections={connections} />
+        </Stack>
+      </Box>
     );
   }
 }
