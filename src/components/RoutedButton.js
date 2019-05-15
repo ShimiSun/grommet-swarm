@@ -6,12 +6,6 @@ import { Grommet as GrommetIcon } from 'grommet-icons';
 
 // A simple component that shows the pathname of the current location
 class RoutedButton extends React.Component {
-  static propTypes = {
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
-    path: PropTypes.string.isRequired,
-  };
-
   onClick = event => {
     const { history, path } = this.props;
     event.preventDefault();
