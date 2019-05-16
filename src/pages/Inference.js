@@ -27,7 +27,7 @@ class Inference extends Component {
         <Box width="xlarge" align="center">
           <SwarmHeading
             title="Swarm Inferencing"
-            desc="Select an image and click 'GO!' to begin inferencing"
+            desc="Select an image and click 'SWARM!' to begin inferencing"
           />
           <Box direction="row">
             {imagesList.map(image => (
@@ -62,7 +62,7 @@ class Inference extends Component {
             label={
               <Box pad={{ horizontal: 'medium' }}>
                 <Text size="xlarge" weight="bold">
-                  GO!
+                  SWARM!
                 </Text>
               </Box>
             }
