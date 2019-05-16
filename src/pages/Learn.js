@@ -23,6 +23,27 @@ const learnCube = (edge, index) => (
   />
 );
 
+const legend = () => (
+  <Box
+    direction="row"
+    gap="medium"
+    alignSelf="center"
+    margin={{ top: 'large' }}
+  >
+    {/* [name, background color] */}
+    {[['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']].map(item => (
+      <Box gap="small" direction="row">
+        <Box
+          background={item[1]}
+          pad={{ vertical: 'xxsmall', horizontal: 'small' }}
+          alignSelf="center"
+        />
+        <Text size="xsmall">{item[0]}</Text>
+      </Box>
+    ))}
+  </Box>
+);
+
 class Learn extends Component {
   state = {};
 
@@ -42,37 +63,40 @@ class Learn extends Component {
         <Box width="xlarge" align="center">
           <SwarmHeading title="Swarm Learning" />
         </Box>
-        <Box direction="row" alignSelf="center">
+        <Box direction="row" justify="between" align="center">
           <Box>
             {edges.map((edge, index) => (
               <Box
                 alignSelf="center"
                 direction="row"
                 gap="medium"
-                pad="large"
+                pad={{ vertical: 'large' }}
                 key={edge.name}
               >
                 {learnCube(edge, index)}
                 <SwarmChart values={[values1, values2]} />
               </Box>
             ))}
-            <Box color="grommet" pad="small" />
+            {legend()}
           </Box>
           <Box alignSelf="center" align="center">
-            <Box direction="row" gap="small">
-              <Inherit color="accent-3" size="large" />
-              <Text weight={600} color="accent-3" alignSelf="center">
-                Swarm Precision: {swarmEdge.accuracy}
-              </Text>
-            </Box>
-            <Box gap="medium" direction="row" alignSelf="center">
-              <Box align="end" alignSelf="center">
-                <Text> {swarmEdge.name} </Text>
-                <Text size="small"> Accuracy: {swarmEdge.accuracy} </Text>
-                <Text size="small"> Time to Learn: {swarmEdge.time} </Text>
+            <Box direction="row" gap="medium">
+              <Box alignSelf="center">
+                <Inherit color="accent-3" size="large" />
               </Box>
-              <SwarmChart values={[values1, values2]} />
+              <Box align="start">
+                <Text weight={600} color="accent-3">
+                  {swarmEdge.name}
+                </Text>
+                <Text weight={600} color="accent-3">
+                  Swarm Precision: {swarmEdge.accuracy}
+                </Text>
+                <Text weight={600} color="accent-3">
+                  Time to Learn: {swarmEdge.time}
+                </Text>
+              </Box>
             </Box>
+            <SwarmChart values={[values1, values2]} />
           </Box>
         </Box>
       </Box>
