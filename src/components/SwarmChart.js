@@ -7,7 +7,7 @@ class SwarmChart extends Component {
 
   componentDidMount() {
     const { values } = this.props;
-    const { axis, bounds } = calcs(values, { coarseness: 5, steps: [3, 3] });
+    const { axis, bounds } = calcs(values[0], { coarseness: 5, steps: [3, 3] });
     const xAxis = axis[0];
     const yAxis = axis[1];
     this.setState({ bounds, yAxis, xAxis });
@@ -17,22 +17,27 @@ class SwarmChart extends Component {
     const { bounds, yAxis, xAxis } = this.state;
     const { values } = this.props;
     const chartProps = {
-      size: { width: 'large', height: 'small' },
+      size: { width: 'medium', height: 'xsmall' },
       bounds,
-      values,
-      overflow: true,
+      overflow: false,
+      thickness: 'xsmall',
+      round: true,
+      type: 'line',
     };
     return (
-      <Box align="center" pad="large" size="xlarge">
+      <Box align="center" pad={{ vertical: 'small' }} border="bottom">
         <Box
           fill
           direction="row"
           justify="between"
           width="medium"
           margin={{ vertical: 'small' }}
+          pad={{ horizontal: 'large' }}
         >
           {xAxis.map(x => (
-            <Text key={x}>{x}</Text>
+            <Text size="small" key={x}>
+              {x}
+            </Text>
           ))}
         </Box>
         <Stack guidingChild="last">
@@ -50,20 +55,31 @@ class SwarmChart extends Component {
               }
               return (
                 <Box key={y} direction="row" align={align}>
-                  <Box pad={{ horizontal: 'small' }} margin="horizontal">
-                    <Text>{y}</Text>
+                  <Box>
+                    <Text size="small">
+                      {parseFloat(y)
+                        .toFixed(1)
+                        .toString()}
+                    </Text>
                   </Box>
-                  {/* <Box border="top" flex /> */}
                 </Box>
               );
             })}
           </Box>
-          <Chart
-            {...chartProps}
-            type="line"
-            color={{ color: 'accent-1', opacity: 'medium' }}
-            thickness="hair"
-          />
+          <Box pad={{ left: 'large' }}>
+            <Chart
+              {...chartProps}
+              values={values[0]}
+              color={{ color: 'grommet' }}
+            />
+          </Box>
+          <Box pad={{ left: 'large' }}>
+            <Chart
+              {...chartProps}
+              values={values[1]}
+              color={{ color: 'accent-1' }}
+            />
+          </Box>
         </Stack>
       </Box>
     );

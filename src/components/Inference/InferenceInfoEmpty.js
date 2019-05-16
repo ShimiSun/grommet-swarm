@@ -21,7 +21,7 @@ export const InferenceInfoEmpty = () => (
       direction="row"
       gap="medium"
     >
-      <Inherit color="accent-3" size="xlarge" />
+      <Inherit color="accent-3" size="xxlarge" />
       <Text alignSelf="center"> Swarm 001</Text>
     </Box>
   </Box>
