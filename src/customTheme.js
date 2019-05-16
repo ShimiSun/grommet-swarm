@@ -13,6 +13,7 @@ export const customTheme = deepMerge(hpe, {
     border: {
       radius: '24px',
     },
+    extend: `padding: 0 36px`,
   },
   diagram: {
     extend:

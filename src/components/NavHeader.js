@@ -2,7 +2,7 @@ import React from 'react';
 import { Anchor, Box, Text, ResponsiveContext } from 'grommet';
 import { HpeLabs } from 'grommet-icons';
 
-import RoutedButton from './RoutedButton';
+import NavHeaderButton from './NavHeaderButton';
 
 const NavHeader = () => (
   <ResponsiveContext.Consumer>
@@ -26,12 +26,19 @@ const NavHeader = () => (
           }
         />
         <Box direction="row" gap="large">
-          <RoutedButton active={false} icon path="/learn" label="Learning" />
-          <RoutedButton
+          <NavHeaderButton
+            active={false}
+            icon
+            path="/learn"
+            label="Learning"
+            style={{ padding: 0 }}
+          />
+          <NavHeaderButton
             active={false}
             icon
             path="/inference"
             label="Inferencing"
+            style={{ padding: 0 }}
           />
         </Box>
       </Box>

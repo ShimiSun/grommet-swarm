@@ -19,8 +19,7 @@ const Cube = ({
     gap="small"
     direction={direction || 'row'}
     key={name}
-    pad="small"
-    round
+    alignSelf="center"
   >
     <CubeIcon id={id} size={iconSize || 'xlarge'} color="grommet" />
     <Box align={align}>

@@ -1,7 +1,8 @@
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-import { Box, RoutedButton, Heading, Paragraph, Text } from 'grommet';
+import { Box, Heading, Paragraph, Text } from 'grommet';
+import RoutedButton from '../RoutedButton';
 
 const Section = ({ children, desc, goto, path, title, width, ...rest }) => (
   <Box align="center" flex={false} {...rest}>
