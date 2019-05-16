@@ -16,7 +16,7 @@ const imageCursor = {
 class Inference extends Component {
   state = {
     isSelected: false,
-    selectedImage: undefined,
+    selectedImage: imagesList[0],
   };
 
   render() {
@@ -36,22 +36,19 @@ class Inference extends Component {
                 width="small"
                 key={image}
                 border={
-                  image === selectedImage && !isSelected
+                  image === selectedImage
                     ? { color: 'accent-3', size: '8px' }
                     : undefined
                 }
               >
                 <ThemeContext.Extend value={imageCursor}>
                   <Image
-                    fit={
-                      image === selectedImage && !isSelected
-                        ? 'cover'
-                        : 'contain'
-                    }
+                    fit={image === selectedImage ? 'cover' : 'contain'}
                     src={image}
                     onClick={() =>
                       this.setState({
                         selectedImage: image,
+                        isSelected: false,
                       })
                     }
                   />
@@ -65,13 +62,13 @@ class Inference extends Component {
             label={
               <Box pad={{ horizontal: 'medium' }}>
                 <Text size="xlarge" weight="bold">
-                  {isSelected ? 'DO IT AGAIN?' : 'GO!'}
+                  GO!
                 </Text>
               </Box>
             }
             onClick={() =>
               this.setState({
-                isSelected: !isSelected,
+                isSelected: true,
               })
             }
           />
