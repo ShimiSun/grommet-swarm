@@ -26,8 +26,9 @@ class Landing extends Component {
           goto="START THE SWARM"
           margin={{ top: 'xlarge' }}
           path="/inference"
-        />
-        <Inherit size="xxlarge" color="accent-3" />
+        >
+          <Inherit size="xxlarge" color="accent-3" />
+        </Section>
       </Box>
     );
   }
