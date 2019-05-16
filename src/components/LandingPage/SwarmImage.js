@@ -7,22 +7,18 @@ const SwarmImage = () => (
     <Box align="center" height="large">
       <Image fit="contain" src="assets/james-wainscoat-521741-unsplash.jpg" />
     </Box>
-    <Box
-      round="xlarge"
-      overflow="hidden"
-      align="center"
-      margin="small"
-      height="large"
-      gap="xlarge"
-    >
+    <Box align="center" height="large">
       <Text color="white" margin="xlarge" size="200px" weight="bold">
         SWARM
       </Text>
-      <Box pad={{ vertical: 'small' }} />
-      <Paragraph textAlign="center" color="white">
-        HPE Swarm Learning and this is where more paragraph text is going, greg
-        needs to send me the full text after he figures it out with Parsad.
-        thanks, Shimi
+      <Box pad={{ vertical: 'xlarge' }} />
+      <Paragraph textAlign="center" color="white" style={{ maxWidth: '816px' }}>
+        HPE Swarm Learning is a decentralized machine learning framework built
+        on blockchain. HPE Labs is taking on challenges in machine learning such
+        as low efficency, the lack of data privacy, and breaking down data silos
+        and building data collaboration. HPE Labes views data bias as a critical
+        issue to be faced with current machine learning models. Swarm Learning
+        helps reduce the impact of environmental and population data bias.
       </Paragraph>
     </Box>
   </Stack>
