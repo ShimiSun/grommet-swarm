@@ -1,13 +1,13 @@
 export const edges = [
   {
-    name: 'Bengaluru DC 001',
+    name: 'Las Vegas DC',
     accuracy: '40%',
     time: '8.4s',
     utilization: '43%',
   },
-  { name: 'London DC 002', accuracy: '50%', time: '8.4s', utilization: '43%' },
+  { name: 'London DC', accuracy: '50%', time: '8.4s', utilization: '43%' },
   {
-    name: 'Las Vegas DC 003',
+    name: 'Bangalore DC',
     accuracy: '60%',
     time: '8.4s',
     utilization: '57%',
@@ -15,7 +15,7 @@ export const edges = [
 ];
 
 export const swarmEdge = {
-  name: 'Swarm 001',
+  name: 'Swarm',
   accuracy: '80%',
   time: '8.4s',
 };
