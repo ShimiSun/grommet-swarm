@@ -38,7 +38,7 @@ Section.propTypes = {
 };
 
 Section.defaultProps = {
-  width: 'large',
+  width: 'xlarge',
 };
 
 export { Section };

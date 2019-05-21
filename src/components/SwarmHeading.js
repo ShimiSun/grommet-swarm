@@ -7,8 +7,10 @@ export const SwarmHeading = ({ desc, title }) => (
     <Heading color="#01a982" level={2} size="xlarge">
       {title}
     </Heading>
-    <Paragraph size="medium" textAlign="center">
-      {desc}
-    </Paragraph>
+    {desc && (
+      <Paragraph size="medium" textAlign="center">
+        {desc}
+      </Paragraph>
+    )}
   </React.Fragment>
 );

@@ -21,6 +21,7 @@ yarn build
 Swarm Learning app for labs Discover 2019
 
 # Author
+
 Shimi
 
 Version

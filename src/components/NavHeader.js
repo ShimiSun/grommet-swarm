@@ -30,14 +30,14 @@ const NavHeader = () => (
             active={false}
             icon
             path="/learn"
-            label="Learning"
+            label={<Text weight={600}>Learning</Text>}
             style={{ padding: 0 }}
           />
           <NavHeaderButton
             active={false}
             icon
             path="/inference"
-            label="Inferencing"
+            label={<Text weight={600}>Inferencing</Text>}
             style={{ padding: 0 }}
           />
         </Box>

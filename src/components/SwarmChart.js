@@ -15,7 +15,7 @@ class SwarmChart extends Component {
 
   render() {
     const { bounds, yAxis, xAxis } = this.state;
-    const { values } = this.props;
+    const { color, values } = this.props;
     const chartProps = {
       size: { width: 'medium', height: 'xsmall' },
       bounds,
@@ -70,7 +70,7 @@ class SwarmChart extends Component {
             <Chart
               {...chartProps}
               values={values[0]}
-              color={{ color: 'grommet' }}
+              color={{ color: color || 'grommet' }}
             />
           </Box>
           <Box pad={{ left: 'large' }}>

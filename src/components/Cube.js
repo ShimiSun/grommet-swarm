@@ -26,9 +26,9 @@ const Cube = ({
       <Text size={textSize} weight={weight}>
         {name}
       </Text>
-      <Text size={textSize}> Accuracy: {accuracy} </Text>
-      <Text size={textSize}> Time To Learn: {time} </Text>
-      <Text size={textSize}> Utilization: {utilization} </Text>
+      {accuracy && <Text size={textSize}> Accuracy: {accuracy} </Text>}
+      {time && <Text size={textSize}> Time To Learn: {time} </Text>}
+      {utilization && <Text size={textSize}> Utilization: {utilization} </Text>}
     </Box>
   </Box>
 );

@@ -57,7 +57,7 @@ export const cubes = results =>
       <Box gap="medium" direction="row" align="center">
         <Cube color="grommet" size="xlarge" />
         <Box gap="small">
-          <Text>{result.name}</Text>
+          <Text size="small">{result.name}</Text>
           {meter(result)}
         </Box>
       </Box>
@@ -65,9 +65,8 @@ export const cubes = results =>
   ));
 
 export const InferenceInfo = () => (
-  <Box direction="row" margin="large" gap="xlarge">
-    {console.log(inferenceResults)}
-    <Box gap="large">{cubes(inferenceResults)}</Box>
+  <Box direction="row" margin="medium" gap="large">
+    <Box gap="medium">{cubes(inferenceResults)}</Box>
     <Box
       align="center"
       pad={{ horizontal: 'xlarge' }}
