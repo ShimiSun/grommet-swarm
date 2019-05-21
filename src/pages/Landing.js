@@ -14,9 +14,11 @@ class Landing extends Component {
         <SwarmImage />
         <Section
           title="Swarm Learning"
-          desc="Collaborative machine learning, data privacy and model training at the Edge."
+          desc="Decentralized machine learning that preserves your data privacy"
           goto="SHOW ME THE LEARNING"
           path="/learn"
+          pad={{ top: 'large' }}
+          // width="large"
         >
           <Learning />
         </Section>
@@ -27,7 +29,9 @@ class Landing extends Component {
           margin={{ top: 'xlarge' }}
           path="/inference"
         >
-          <Inherit size="xxlarge" color="accent-3" />
+          <Box margin="large">
+            <Inherit size="xxlarge" color="accent-3" />
+          </Box>
         </Section>
       </Box>
     );

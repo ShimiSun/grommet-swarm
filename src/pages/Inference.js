@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
 import { Box, Button, Image, Text, ThemeContext } from 'grommet';
-import { SwarmHeading } from '../components';
+import { Grommet, Refresh } from 'grommet-icons';
 
-import { imagesList } from '../data/imagesList';
+import { SwarmHeading } from '../components';
+import { imagesListOriginal, randomNoRepeats } from '../data/imagesList';
 import { InferenceInfoEmpty } from '../components/Inference/InferenceInfoEmpty';
 import { InferenceInfo } from '../components/Inference/InferenceInfo';
 
@@ -16,34 +17,44 @@ const imageCursor = {
 class Inference extends Component {
   state = {
     isSelected: false,
-    selectedImage: imagesList[0],
+    images: imagesListOriginal,
   };
 
+  componentDidMount() {
+    const { images } = this.state;
+    this.setState({ selectedImage: images[0] });
+  }
+
   render() {
-    const { isSelected, selectedImage } = this.state;
+    const { images, isSelected, selectedImage } = this.state;
 
     return (
       <Box alignSelf="center" align="center">
-        <Box width="xlarge" align="center">
+        <Box width="xlarge" align="center" gap="small">
           <SwarmHeading
             title="Swarm Inferencing"
-            desc="Select an image and click 'SWARM!' to begin inferencing"
+            // desc="Select an image and click 'SWARM!' to begin inferencing"
           />
+          <Box align="end" fill>
+            <Button
+              icon={<Refresh color="brand" size="customRefreshSize" />}
+              style={{ padding: '0' }}
+              plain
+              onClick={() => {
+                const list = randomNoRepeats();
+                this.setState({
+                  images: list,
+                  selectedImage: list[0],
+                });
+              }}
+            />
+          </Box>
           <Box direction="row">
-            {imagesList.map(image => (
-              <Box
-                height="small"
-                width="small"
-                key={image}
-                border={
-                  image === selectedImage
-                    ? { color: 'accent-3', size: '8px' }
-                    : undefined
-                }
-              >
+            {images.map(image => (
+              <Box height="xsmall" key={image}>
                 <ThemeContext.Extend value={imageCursor}>
                   <Image
-                    fit={image === selectedImage ? 'cover' : 'contain'}
+                    fit="contain"
                     src={image}
                     onClick={() =>
                       this.setState({
@@ -53,6 +64,12 @@ class Inference extends Component {
                     }
                   />
                 </ThemeContext.Extend>
+                <Box alignSelf="center" pad={{ top: 'xsmall' }}>
+                  <Grommet
+                    size="customSize"
+                    color={image === selectedImage ? 'accent-3' : 'white'}
+                  />
+                </Box>
               </Box>
             ))}
           </Box>
@@ -61,8 +78,8 @@ class Inference extends Component {
             margin="small"
             label={
               <Box pad={{ horizontal: 'medium' }}>
-                <Text size="xlarge" weight="bold">
-                  SWARM!
+                <Text size="medium" weight="bold">
+                  START INFERENCING
                 </Text>
               </Box>
             }

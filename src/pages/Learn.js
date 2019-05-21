@@ -11,17 +11,21 @@ import { central, central2 } from '../data/central';
 
 const learnCube = (edge, index) => (
   <Cube
-    accuracy={edge.accuracy}
+    // accuracy={edge.accuracy}
     align="end"
     direction="column"
     iconSize="large"
     id={index}
     name={edge.name}
     textSize="small"
-    time={edge.time}
-    utilization={edge.utilization}
+    // time={edge.time}
+    // utilization={edge.utilization}
   />
 );
+
+const legendData = central2
+  ? [['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']]
+  : [['Avg Precision', 'grommet']];
 
 const legend = () => (
   <Box
@@ -31,8 +35,8 @@ const legend = () => (
     margin={{ top: 'large' }}
   >
     {/* [name, background color] */}
-    {[['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']].map(item => (
-      <Box gap="small" direction="row">
+    {legendData.map(item => (
+      <Box gap="small" direction="row" key={item[0]}>
         <Box
           background={item[1]}
           pad={{ vertical: 'xxsmall', horizontal: 'small' }}
@@ -53,10 +57,14 @@ class Learn extends Component {
       values1.push({ value: [point.time, point.moving_average] }),
     );
 
-    const values2 = [];
-    central2.map(point =>
-      values2.push({ value: [point.time, point.moving_average] }),
-    );
+    let values = [values1];
+    if (central2) {
+      const values2 = [];
+      central2.map(point =>
+        values2.push({ value: [point.time, point.moving_average] }),
+      );
+      values = [values1, values2];
+    }
 
     return (
       <Box alignSelf="center">
@@ -70,33 +78,36 @@ class Learn extends Component {
                 alignSelf="center"
                 direction="row"
                 gap="medium"
-                pad={{ vertical: 'large' }}
+                pad={{ vertical: 'small' }}
                 key={edge.name}
               >
                 {learnCube(edge, index)}
-                <SwarmChart values={[values1, values2]} />
+                <SwarmChart values={values} />
               </Box>
             ))}
             {legend()}
           </Box>
-          <Box alignSelf="center" align="center">
-            <Box direction="row" gap="medium">
+          <Box alignSelf="center">
+            <Box alignSelf="center" width="medium" pad={{ bottom: 'large' }}>
+              <Text weight="bold" textAlign="center" size="large">
+                Swarm learns from all the data centers to recognize content to
+                provide a result at a specified accuracy threshold.
+              </Text>
+            </Box>
+            <Box direction="row" gap="small" alignSelf="center">
               <Box alignSelf="center">
                 <Inherit color="accent-3" size="large" />
               </Box>
-              <Box align="start">
+              <Box align="start" alignSelf="center">
                 <Text weight={600} color="accent-3">
                   {swarmEdge.name}
                 </Text>
-                <Text weight={600} color="accent-3">
-                  Swarm Precision: {swarmEdge.accuracy}
-                </Text>
-                <Text weight={600} color="accent-3">
-                  Time to Learn: {swarmEdge.time}
-                </Text>
+                {/* <Text weight={600} color="accent-3">
+                  Accuracy: {swarmEdge.accuracy}
+                </Text> */}
               </Box>
             </Box>
-            <SwarmChart values={[values1, values2]} />
+            <SwarmChart values={values} color="accent-3" />
           </Box>
         </Box>
       </Box>
