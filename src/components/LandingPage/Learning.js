@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { Box, Diagram, Stack, Text } from 'grommet';
+import { Box, Diagram, ResponsiveContext, Stack, Text } from 'grommet';
 import { Inherit } from 'grommet-icons';
 
 import { Cube } from '../Cube';
-// import { Inherit } from 'grommet-icons';
 
 import { edges as edge } from '../../data/edges';
 import { descriptiveLearning } from '../../data/descriptiveLearning';
@@ -20,16 +19,16 @@ const connection = (fromTarget, toTarget, { color, ...rest } = {}) => ({
   ...rest,
 });
 
-const LearningCube = (node, index) => (
+const LearningCube = ({ node, index, iconSize }) => (
   <Cube
-    // accuracy={node.accuracy}
+    accuracy={node.accuracy}
     id={index}
-    key={node.name}
     name={node.name}
-    // time={node.time}
-    // utilization={node.utilization}
-    textSize="xlarge"
-    // weight="bold"
+    iconSize={iconSize}
+    textSize="medium"
+    time={node.time}
+    utilization={node.utilization}
+    weight="bold"
   />
 );
 
@@ -57,59 +56,76 @@ class Learning extends React.Component {
       connections.push(connection('4', '3', { anchor: 'vertical' }));
     }
 
+    const getResponsiveSize = size => {
+      return size === 'small' ? 'large' : 'xlarge';
+    };
+
     return (
-      <Box direction="row" align="center" width="xlarge" gap="medium">
-        <Box pad="large">
-          <Stack>
-            <Box>
-              <Box alignSelf="center" margin={{ bottom: 'large' }}>
-                {LearningCube(edge[0], '1')}
-                <Box pad="small" />
-                <Box
-                  id="4"
-                  width="xsmall"
-                  margin={{ bottom: 'large', top: 'xlarge' }}
-                />
-              </Box>
-              <Box direction="row" gap="xlarge">
-                {[2, 3].map(id => LearningCube(edge[id - 1], id))}
-              </Box>
+      <ResponsiveContext.Consumer>
+        {size => (
+          <Box direction="row" align="center" width="xlarge" gap="medium">
+            <Box pad="large">
+              <Stack>
+                <Box>
+                  <Box alignSelf="center" margin={{ bottom: 'large' }}>
+                    <LearningCube
+                      node={edge[0]}
+                      index={1}
+                      iconSize={getResponsiveSize(size)}
+                    />
+                    <Box pad="small" />
+                    <Box
+                      id="4"
+                      width="xsmall"
+                      margin={{ bottom: 'large', top: 'xlarge' }}
+                    />
+                  </Box>
+                  <Box direction="row" gap="xlarge">
+                    {[2, 3].map(id => (
+                      <LearningCube
+                        key={id}
+                        node={edge[id - 1]}
+                        index={id}
+                        iconSize={getResponsiveSize(size)}
+                      />
+                    ))}
+                  </Box>
+                </Box>
+                <Diagram connections={connections} />
+              </Stack>
             </Box>
-            <Diagram connections={connections} />
-          </Stack>
-        </Box>
-        <Box gap="small" alignSelf="center" align="start">
-          <Box direction="row">
-            <Inherit size="xlarge" color="accent-3" />
-            <Box alignSelf="center" pad={{ left: 'small' }}>
-              <Text
-                color="accent-3"
-                size="xxlarge"
-                weight="bold"
-                alignSelf="center"
-              >
-                Swarm Advantages
-              </Text>
-              {/* <Text weight="bold" color="accent-3" size="small">
-                  Accuracy: 80%
-                </Text>
-                <Text weight="bold" color="accent-3" size="small">
-                  Time to Learn: 8.4s
-                </Text> */}
+            <Box gap="small" alignSelf="center" align="start">
+              <Box direction="row">
+                <Inherit size={getResponsiveSize(size)} color="accent-3" />
+                <Box alignSelf="center" pad={{ left: 'small' }}>
+                  <Text
+                    color="accent-3"
+                    size={getResponsiveSize(size)}
+                    weight="bold"
+                    alignSelf="center"
+                  >
+                    Swarm Advantages
+                  </Text>
+                </Box>
+              </Box>
+              <Box direction="row" gap="small">
+                <Box pad="large" />
+                <Box gap="xsmall">
+                  {descriptiveLearning.map(desc => (
+                    <Text
+                      weight="bold"
+                      size={getResponsiveSize(size)}
+                      key={desc}
+                    >
+                      {desc}
+                    </Text>
+                  ))}
+                </Box>
+              </Box>
             </Box>
           </Box>
-          <Box direction="row" gap="small">
-            <Box pad="large" />
-            <Box gap="xsmall">
-              {descriptiveLearning.map(desc => (
-                <Text weight="bold" size="xlarge" key={desc}>
-                  {desc}
-                </Text>
-              ))}
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+        )}
+      </ResponsiveContext.Consumer>
     );
   }
 }

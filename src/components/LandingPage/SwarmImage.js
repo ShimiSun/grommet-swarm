@@ -5,7 +5,10 @@ import { Box, Image, Stack, Text, Paragraph } from 'grommet';
 const SwarmImage = () => (
   <Stack anchor="center">
     <Box align="center" height="large">
-      <Image fit="contain" src="assets/james-wainscoat-521741-unsplash.jpg" />
+      <Image
+        fit="contain"
+        src="assets/james-wainscoat-521741-unsplash-resized.jpg"
+      />
     </Box>
     <Box align="center" height="large">
       <Text color="white" margin="xlarge" size="200px" weight="bold">
