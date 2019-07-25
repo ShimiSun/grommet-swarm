@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Text, Meter } from 'grommet';
+import { Box, Meter, ResponsiveContext, Text } from 'grommet';
 import { Cube, Inherit } from 'grommet-icons';
 
 import {
@@ -51,11 +51,15 @@ const meter = (result, color, size, thickness) => (
   </Box>
 );
 
-export const cubes = results =>
+const getResponsiveSize = size => {
+  return size === 'small' ? 'large' : 'xlarge';
+};
+
+export const cubes = (results, size) =>
   results.map(result => (
     <Box key={result.name}>
       <Box gap="medium" direction="row" align="center">
-        <Cube color="grommet" size="xlarge" />
+        <Cube color="grommet" size={getResponsiveSize(size)} />
         <Box gap="small">
           <Text size="small">{result.name}</Text>
           {meter(result)}
@@ -65,24 +69,33 @@ export const cubes = results =>
   ));
 
 export const InferenceInfo = () => (
-  <Box direction="row" margin="medium" gap="large">
-    <Box gap="medium">{cubes(inferenceResults)}</Box>
-    <Box
-      align="center"
-      pad={{ horizontal: 'xlarge' }}
-      direction="row"
-      gap="medium"
-    >
-      <Inherit color="accent-3" size="xlarge" />
-      <Box gap="small">
-        <Box gap="xsmall">
-          <Text size="medium" weight="bold">
-            {inferenceResultsSwarm[0].name}
-          </Text>
-          {meter(inferenceResultsSwarm[0], 'accent-3', 'small', 'medium')}
+  <ResponsiveContext.Consumer>
+    {size => (
+      <Box
+        direction={size === 'small' ? 'column' : 'row'}
+        margin="medium"
+        gap={size === 'small' ? 'xlarge' : 'large'}
+        align="center"
+      >
+        <Box gap="medium">{cubes(inferenceResults, size)}</Box>
+        <Box
+          align="center"
+          pad={{ horizontal: 'xlarge' }}
+          direction="row"
+          gap="medium"
+        >
+          <Inherit color="accent-3" size={getResponsiveSize(size)} />
+          <Box gap="small">
+            <Box gap="xsmall">
+              <Text size="medium" weight="bold">
+                {inferenceResultsSwarm[0].name}
+              </Text>
+              {meter(inferenceResultsSwarm[0], 'accent-3', 'small', 'medium')}
+            </Box>
+            <Text size="xsmall">Time to Learn: 8.4 seconds</Text>
+          </Box>
         </Box>
-        <Text size="xsmall">Time to Learn: 8.4 seconds</Text>
       </Box>
-    </Box>
-  </Box>
+    )}
+  </ResponsiveContext.Consumer>
 );

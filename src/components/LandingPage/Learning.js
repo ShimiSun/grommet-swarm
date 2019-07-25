@@ -63,7 +63,12 @@ class Learning extends React.Component {
     return (
       <ResponsiveContext.Consumer>
         {size => (
-          <Box direction="row" align="center" width="xlarge" gap="medium">
+          <Box
+            direction={size === 'small' ? 'column' : 'row'}
+            align="center"
+            width="xlarge"
+            gap="medium"
+          >
             <Box pad="large">
               <Stack>
                 <Box>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Box, Text } from 'grommet';
+import { Box, ResponsiveContext, Text } from 'grommet';
 import { Inherit } from 'grommet-icons';
 import { Cube } from '../components/Cube';
 import { SwarmChart } from '../components/SwarmChart';
@@ -9,17 +9,17 @@ import { SwarmHeading } from '../components';
 import { edges, swarmEdge } from '../data/edges';
 import { central, central2 } from '../data/central';
 
-const learnCube = (edge, index) => (
+const learnCube = (edge, index, textSize) => (
   <Cube
-    // accuracy={edge.accuracy}
+    accuracy={edge.accuracy}
     align="end"
     direction="column"
     iconSize="large"
     id={index}
     name={edge.name}
-    textSize="small"
-    // time={edge.time}
-    // utilization={edge.utilization}
+    textSize={textSize}
+    time={edge.time}
+    utilization={edge.utilization}
   />
 );
 
@@ -27,7 +27,7 @@ const legendData = central2
   ? [['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']]
   : [['Avg Precision', 'grommet']];
 
-const legend = () => (
+const Legend = () => (
   <Box
     direction="row"
     gap="medium"
@@ -67,50 +67,65 @@ class Learn extends Component {
     }
 
     return (
-      <Box alignSelf="center">
-        <Box width="xlarge" align="center">
-          <SwarmHeading title="Swarm Learning" />
-        </Box>
-        <Box direction="row" justify="between" align="center">
-          <Box>
-            {edges.map((edge, index) => (
-              <Box
-                alignSelf="center"
-                direction="row"
-                gap="medium"
-                pad={{ vertical: 'small' }}
-                key={edge.name}
-              >
-                {learnCube(edge, index)}
-                <SwarmChart values={values} />
-              </Box>
-            ))}
-            {legend()}
-          </Box>
+      <ResponsiveContext.Consumer>
+        {size => (
           <Box alignSelf="center">
-            <Box alignSelf="center" width="medium" pad={{ bottom: 'large' }}>
-              <Text weight="bold" textAlign="center" size="large">
-                Swarm learns from all the data centers to recognize content to
-                provide a result at a specified accuracy threshold.
-              </Text>
+            <Box width="xlarge" align="center">
+              <SwarmHeading title="Swarm Learning" />
             </Box>
-            <Box direction="row" gap="small" alignSelf="center">
+            <Box
+              direction={size === 'small' ? 'column' : 'row'}
+              justify="between"
+              align="center"
+              gap={size === 'small' ? 'xlarge' : undefined}
+            >
+              <Box>
+                {edges.map((edge, index) => (
+                  <Box
+                    alignSelf="center"
+                    direction="row"
+                    gap="medium"
+                    pad={{ vertical: 'small' }}
+                    key={edge.name}
+                  >
+                    {learnCube(
+                      edge,
+                      index,
+                      size === 'small' ? 'xsmall' : 'small',
+                    )}
+                    <SwarmChart values={values} />
+                  </Box>
+                ))}
+                <Legend />
+              </Box>
               <Box alignSelf="center">
-                <Inherit color="accent-3" size="large" />
-              </Box>
-              <Box align="start" alignSelf="center">
-                <Text weight={600} color="accent-3">
-                  {swarmEdge.name}
-                </Text>
-                {/* <Text weight={600} color="accent-3">
-                  Accuracy: {swarmEdge.accuracy}
-                </Text> */}
+                <Box
+                  alignSelf="center"
+                  width="medium"
+                  pad={{ bottom: 'large' }}
+                >
+                  <Text weight="bold" textAlign="center" size="large">
+                    Swarm learns from all the data centers to recognize content
+                    to provide a result at a specified accuracy threshold.
+                  </Text>
+                </Box>
+                <Box direction="row" gap="small" alignSelf="center">
+                  <Inherit color="accent-3" size="large" />
+                  <Text
+                    weight={600}
+                    align="start"
+                    alignSelf="center"
+                    color="accent-3"
+                  >
+                    {swarmEdge.name}
+                  </Text>
+                </Box>
+                <SwarmChart values={values} color="accent-3" />
               </Box>
             </Box>
-            <SwarmChart values={values} color="accent-3" />
           </Box>
-        </Box>
-      </Box>
+        )}
+      </ResponsiveContext.Consumer>
     );
   }
 }
