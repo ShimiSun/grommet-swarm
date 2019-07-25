@@ -33,7 +33,7 @@ class Inference extends Component {
         <Box width="xlarge" align="center" gap="small">
           <SwarmHeading
             title="Swarm Inferencing"
-            // desc="Select an image and click 'SWARM!' to begin inferencing"
+            desc="Select an image and click 'SWARM!' to begin inferencing"
           />
           <Box align="end" fill>
             <Button

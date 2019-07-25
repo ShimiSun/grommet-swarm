@@ -1,4 +1,4 @@
-export * from './Inference';
+export * from './Inferencing';
 export * from './Landing';
-export * from './Learn';
+export * from './Learning';
 export * from './NotFound';

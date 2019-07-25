@@ -18,7 +18,6 @@ class Landing extends Component {
           goto="SHOW ME THE LEARNING"
           path="/learn"
           pad={{ top: 'large' }}
-          // width="large"
         >
           <Learning />
         </Section>
