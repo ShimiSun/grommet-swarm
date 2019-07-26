@@ -5,7 +5,7 @@ import { Box, ResponsiveContext, Text } from 'grommet';
 import { inferenceResults } from '../../data/inferenceResults';
 import { getResponsiveSize } from './CubesInfo';
 
-export const CubesPlaceholder = ({ size }) =>
+const CubesPlaceholder = ({ size }) =>
   inferenceResults.map(edge => (
     <Box gap="medium" direction="row" key={edge.name}>
       <Cube color="grommet" size={getResponsiveSize(size)} />

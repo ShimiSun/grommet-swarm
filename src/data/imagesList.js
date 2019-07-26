@@ -19,7 +19,7 @@ export const imagesListOriginal = [
   'assets/database/truck7.png',
 ];
 
-export const imagesArray = [
+const imagesArray = [
   'assets/database/airplane1.png',
   'assets/database/airplane2.png',
   'assets/database/airplane3.png',
@@ -53,15 +53,15 @@ export const imagesArray = [
 ];
 
 const SIZE = 18;
+const RESPONSIVE_SIZE = 10;
 
-export const randomNoRepeats = () => {
+export const randomNoRepeats = responsiveSize => {
   const result = [];
+  const size = responsiveSize === 'small' ? RESPONSIVE_SIZE : SIZE;
   const copy = imagesArray.slice(0);
-  while (result.length < SIZE) {
+  while (result.length < size) {
     const index = Math.floor(Math.random() * copy.length);
     result.push(copy.splice(index, 1)[0]);
   }
   return result;
 };
-
-export const imagesList = randomNoRepeats(imagesArray);
