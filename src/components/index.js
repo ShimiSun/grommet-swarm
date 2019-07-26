@@ -1,3 +1,3 @@
+export * from './Cube';
 export * from './NavHeader';
-export * from './SwarmChart';
 export * from './SwarmHeading';

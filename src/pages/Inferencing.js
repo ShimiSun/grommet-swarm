@@ -4,9 +4,8 @@ import { Box, Button, Image, Text, ThemeContext } from 'grommet';
 import { Grommet, Refresh } from 'grommet-icons';
 
 import { SwarmHeading } from '../components';
+import { Results, PrepResult } from '../components/Inference';
 import { imagesListOriginal, randomNoRepeats } from '../data/imagesList';
-import { InferenceInfoEmpty } from '../components/Inference/InferenceInfoEmpty';
-import { InferenceInfo } from '../components/Inference/InferenceInfo';
 
 const imageCursor = {
   image: {
@@ -89,7 +88,7 @@ class Inference extends Component {
               })
             }
           />
-          {isSelected ? <InferenceInfo /> : <InferenceInfoEmpty />}
+          {isSelected ? <Results /> : <PrepResult />}
         </Box>
       </Box>
     );

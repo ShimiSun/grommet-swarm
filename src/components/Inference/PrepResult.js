@@ -3,35 +3,30 @@ import React from 'react';
 import { Cube, Inherit } from 'grommet-icons';
 import { Box, ResponsiveContext, Text } from 'grommet';
 import { inferenceResults } from '../../data/inferenceResults';
+import { getResponsiveSize } from './CubesInfo';
 
-export const cubes = inferenceResults.map(edge => (
-  <ResponsiveContext.Consumer key={edge.name}>
-    {size => (
-      <Box>
-        <Box gap="medium" direction="row">
-          <Cube color="grommet" size={size === 'small' ? 'large' : 'xlarge'} />
-          <Text alignSelf="center"> {edge.name}</Text>
-        </Box>
-      </Box>
-    )}
-  </ResponsiveContext.Consumer>
-));
+export const CubesPlaceholder = ({ size }) =>
+  inferenceResults.map(edge => (
+    <Box gap="medium" direction="row" key={edge.name}>
+      <Cube color="grommet" size={getResponsiveSize(size)} />
+      <Text alignSelf="center"> {edge.name}</Text>
+    </Box>
+  ));
 
-export const InferenceInfoEmpty = () => (
+export const PrepResult = () => (
   <ResponsiveContext.Consumer>
     {size => (
       <Box direction="row" margin="large" justify="between" align="center">
-        <Box gap="medium">{cubes}</Box>
+        <Box gap="medium">
+          <CubesPlaceholder size={size} />
+        </Box>
         <Box
           alignSelf="center"
           pad={{ horizontal: 'xlarge' }}
           direction="row"
           gap="medium"
         >
-          <Inherit
-            color="accent-3"
-            size={size === 'small' ? 'large' : 'xlarge'}
-          />
+          <Inherit color="accent-3" size={getResponsiveSize(size)} />
           <Text alignSelf="center"> Swarm 001</Text>
         </Box>
       </Box>

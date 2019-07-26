@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 import { Box, ResponsiveContext, Text } from 'grommet';
 import { Inherit } from 'grommet-icons';
-import { Cube } from '../components/Cube';
-import { SwarmChart } from '../components/SwarmChart';
-import { SwarmHeading } from '../components';
+import { Cube, SwarmHeading } from '../components';
+import { SwarmChart } from '../components/Learn';
 
 import { edges, swarmEdge } from '../data/edges';
 import { central, central2 } from '../data/central';
