@@ -20,15 +20,6 @@ const imageCursor = {
   },
 };
 
-const SelectionIndicator = (image, selectedImage) => (
-  <Box alignSelf="center" pad={{ top: 'xsmall' }}>
-    <Grommet
-      size="customSize"
-      color={image === selectedImage ? 'accent-3' : 'white'}
-    />
-  </Box>
-);
-
 const StartInferencingLabel = () => (
   <Box pad={{ horizontal: 'medium' }}>
     <Text size="medium" weight="bold">
@@ -87,10 +78,12 @@ class Inference extends Component {
                         }
                       />
                     </ThemeContext.Extend>
-                    <SelectionIndicator
-                      image={image}
-                      selectedImage={selectedImage}
-                    />
+                    <Box alignSelf="center" pad={{ top: 'xsmall' }}>
+                      <Grommet
+                        size="customSize"
+                        color={image === selectedImage ? 'accent-3' : 'white'}
+                      />
+                    </Box>
                   </Box>
                 ))}
               </Box>
