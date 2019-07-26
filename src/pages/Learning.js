@@ -22,9 +22,7 @@ const learnCube = (edge, index, textSize) => (
   />
 );
 
-const legendData = central2
-  ? [['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']]
-  : [['Avg Precision', 'grommet']];
+const legendData = [['Avg Precision', 'grommet'], ['Avg Loss', 'accent-1']];
 
 const Legend = () => (
   <Box
@@ -56,14 +54,12 @@ class Learn extends Component {
       values1.push({ value: [point.time, point.moving_average] }),
     );
 
-    let values = [values1];
-    if (central2) {
-      const values2 = [];
-      central2.map(point =>
-        values2.push({ value: [point.time, point.moving_average] }),
-      );
-      values = [values1, values2];
-    }
+    const values2 = [];
+    central2.map(point =>
+      values2.push({ value: [point.time, point.moving_average] }),
+    );
+
+    const values = [values1, values2];
 
     return (
       <ResponsiveContext.Consumer>
