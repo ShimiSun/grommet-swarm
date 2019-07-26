@@ -8,7 +8,7 @@ import { SwarmChart } from '../components/Learn';
 import { edges, swarmEdge } from '../data/edges';
 import { central, central2 } from '../data/central';
 
-const learnCube = (edge, index, textSize) => (
+const LearnCube = ({ edge, index, textSize }) => (
   <Cube
     accuracy={edge.accuracy}
     align="end"
@@ -83,11 +83,11 @@ class Learn extends Component {
                     pad={{ vertical: 'small' }}
                     key={edge.name}
                   >
-                    {learnCube(
-                      edge,
-                      index,
-                      size === 'small' ? 'xsmall' : 'small',
-                    )}
+                    <LearnCube
+                      edge={edge}
+                      index={index}
+                      textSize={size === 'small' ? 'xsmall' : 'small'}
+                    />
                     <SwarmChart values={values} />
                   </Box>
                 ))}
