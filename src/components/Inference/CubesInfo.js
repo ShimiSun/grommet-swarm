@@ -13,7 +13,7 @@ export const CubesInfo = ({ nodes, size, showMeters }) =>
     <Box key={node.name}>
       <Box gap="medium" direction="row" align="center">
         <Cube color="grommet" size={getResponsiveSize(size)} />
-        <Box gap="small">
+        <Box pad={{ vertical: 'small' }}>
           <Text size="small">{node.name}</Text>
           {showMeters && <SwarmMeters result={node} />}
         </Box>
