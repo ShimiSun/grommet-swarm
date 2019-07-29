@@ -10,6 +10,7 @@ const SwarmImage = () => (
           <Image
             fit="contain"
             src="assets/james-wainscoat-521741-unsplash-resized.jpg"
+            width="100%"
           />
         </Box>
         <Box align="center" height="large">
