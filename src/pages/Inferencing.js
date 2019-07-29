@@ -52,7 +52,12 @@ class Inference extends Component {
               />
               <Box align="end" fill>
                 <Button
-                  icon={<Refresh color="brand" size="customRefreshSize" />}
+                  icon={
+                    <Refresh
+                      color="brand"
+                      size={size === 'small' ? 'small' : 'customRefreshSize'}
+                    />
+                  }
                   plain
                   onClick={() => {
                     const list = randomNoRepeats(size);
@@ -69,6 +74,7 @@ class Inference extends Component {
                     <ThemeContext.Extend value={imageCursor}>
                       <Image
                         fit="contain"
+                        height="100%"
                         src={image}
                         onClick={() =>
                           this.setState({
@@ -80,7 +86,7 @@ class Inference extends Component {
                     </ThemeContext.Extend>
                     <Box alignSelf="center" pad={{ top: 'xsmall' }}>
                       <Grommet
-                        size="customSize"
+                        size={size === 'small' ? 'small' : 'customSize'}
                         color={image === selectedImage ? 'accent-3' : 'white'}
                       />
                     </Box>
