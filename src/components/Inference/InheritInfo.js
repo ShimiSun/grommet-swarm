@@ -18,16 +18,16 @@ export const InheritInfo = ({ size }) => (
     <Box gap="small">
       <Box gap="xsmall">
         <Text size="medium" weight="bold">
-          {inferenceResultsSwarm[0].name}
+          {inferenceResultsSwarm.name}
         </Text>
         <SwarmMeters
-          result={inferenceResultsSwarm[0]}
+          result={inferenceResultsSwarm}
           color="accent-3"
           size="small"
           thickness="medium"
         />
       </Box>
-      <Text size="xsmall">Time to Learn: 8.4 seconds</Text>
+      <Text size="xsmall">Time to Learn: {inferenceResultsSwarm.time} </Text>
     </Box>
   </Box>
 );

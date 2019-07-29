@@ -4,6 +4,10 @@ export const inferenceResults = [
   { name: 'Bangalore DC', car: 11, truck: 13, ship: 79 },
 ];
 
-export const inferenceResultsSwarm = [
-  { name: 'SWARM 001', car: 95, truck: 84, ship: 79 },
-];
+export const inferenceResultsSwarm = {
+  name: 'SWARM 001',
+  car: 95,
+  truck: 84,
+  ship: 79,
+  time: '8.4 seconds',
+};
