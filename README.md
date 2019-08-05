@@ -18,7 +18,7 @@ yarn build
 
 # App Info
 
-Swarm Learning app for labs Discover 2019
+Swarm Learning app for HPE Labs Discover 2019
 
 # Author
 
