@@ -35,6 +35,7 @@ const LearningCube = ({ node, index, iconSize }) => (
 class Learning extends React.Component {
   state = {
     draw: true,
+    isLoaded: false,
   };
 
   componentDidMount() {
@@ -44,10 +45,14 @@ class Learning extends React.Component {
         draw: !draw,
       });
     }, 3000);
+
+    setTimeout(() => {
+      this.setState({ isLoaded: true });
+    }, 1000);
   }
 
   render() {
-    const { draw } = this.state;
+    const { draw, isLoaded } = this.state;
     const connections = [];
 
     if (draw) {
@@ -96,7 +101,7 @@ class Learning extends React.Component {
                     ))}
                   </Box>
                 </Box>
-                <Diagram connections={connections} />
+                {isLoaded && <Diagram connections={connections} />}
               </Stack>
             </Box>
             <Box gap="small" alignSelf="center" align="start">
