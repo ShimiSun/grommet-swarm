@@ -25,7 +25,7 @@ yarn build
 
 ## App Info
 
-Swarm Learning UI app for HPE Labs - HPE Discover 2019
+Swarm Learning UI demo app for HPE Labs - HPE Discover 2019
 
 ## Author
 
