@@ -33,7 +33,7 @@ const SwarmImage = () => (
             HPE Swarm Learning is a decentralized machine learning framework
             built on blockchain. HPE Labs is taking on challenges in machine
             learning such as low efficency, the lack of data privacy, and
-            breaking down data silos and building data collaboration. HPE Labes
+            breaking down data silos and building data collaboration. HPE Labs
             views data bias as a critical issue to be faced with current machine
             learning models. Swarm Learning helps reduce the impact of
             environmental and population data bias.
